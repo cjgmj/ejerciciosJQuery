@@ -22,6 +22,26 @@
         hr {
             margin-bottom: 60px;
         }
+        
+        .morado {
+            color: purple;
+        }
+        
+        .rojo {
+            color: red;
+        }
+        
+        .azul {
+            color: blue;
+        }
+        
+        .verde {
+            color: green;
+        }
+        
+        .naranja {
+            color: orange;
+        }
     </style>
 
 </head>
@@ -33,9 +53,10 @@
         <hr>
 
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-4 text-center">
                 <img src="img/nophoto.jpg">
                 <!-- class="rounded-circle"> -->
+                <h4>John Doe</h4>
             </div>
 
             <div class="col-sm-5">
@@ -68,9 +89,32 @@
         //     .removeClass('rounded-circle')
         //     .addClass('img-thumbnail');
 
+        // Manejo de las imágenes
         $('img')
-            .attr('src', 'img2/imagen.png')
+            .attr('src', 'img/profesor.jpg')
             .addClass('rounded-circle img-thumbnail');
+
+        // Modificar segundo bloque
+        // Búsqueda por hijos
+        // $('.col-sm-5').children('p').eq(0);
+
+        $('.col-sm-5')
+            .find('p')
+            // .text('Hola John Doe') // Introduce el texto literalmente
+            .html('Hola <u>John Doe</u>'); // Interpreta si hay código html
+
+        // Referencia a la lista ordenada
+        // $('ul li')
+        //     .eq(1) // Si se introduce un valor mayor al tamaño de la lista no se aplica a ninguno
+        //     .css('color', 'red');
+
+        // La instrucción end te devuelve al selector original
+        $('ul li')
+            .eq(0).addClass('morado').end()
+            .eq(1).addClass('rojo').end()
+            .eq(2).addClass('azul').end()
+            .eq(3).addClass('verde').end()
+            .eq(4).addClass('naranja').end();
     </script>
 </body>
 
