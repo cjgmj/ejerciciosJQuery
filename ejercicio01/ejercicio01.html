@@ -20,36 +20,45 @@
 
     <!-- Para poner el script en el header tenemos que asegurarnos
 	que la página está completamente cargada -->
-    <script>
+    <!-- <script>
         // Se puede simplificar como vemos en la siguiente línea
         // $(document).ready(() => $("ul").addClass("textoVerde"));
 
         // $(() => $("ul").addClass("textoVerde"));
         $(() => $("li:last-child").addClass("textoVerde"));
-    </script>
+    </script> -->
 </head>
 
 <body>
-    <ul>
-        <li>Hola 1</li>
-        <li>Hola 2</li>
-        <li>Hola 3</li>
-    </ul>
+    <div class="container">
+        <h1>Ejecicio 01</h1>
+        <hr />
 
-    <ul>
-        <li>Negrita</li>
-        <li>Negrita</li>
-        <li>Negrita</li>
-    </ul>
+        <ul>
+            <li>Hola 1</li>
+            <li>Hola 2</li>
+            <li>Hola 3</li>
+        </ul>
 
-    <!-- Los scripts deben ir al final para asegurarnos que
-	todos los elementos de la página estén cargados -->
-    <!-- <script>
-		// jQuery es igual que $, siendo ésta última la 
-		// más utilizada
-        // jQuery("ul").addClass("textoVerde");
-        $("ul").addClass("textoVerde");
-    </script> -->
+        <ul>
+            <li>Negrita</li>
+            <li>Negrita</li>
+            <li>Negrita</li>
+        </ul>
+
+        <!-- Los scripts deben ir al final para asegurarnos que
+		todos los elementos de la página estén cargados -->
+        <!-- <script>
+			// jQuery es igual que $, siendo ésta última la 
+			// más utilizada
+			// jQuery("ul").addClass("textoVerde");
+			$("ul").addClass("textoVerde");
+		</script> -->
+
+        <script>
+            $(() => $("li:last-child").addClass("textoVerde"));
+        </script>
+    </div>
 </body>
 
 </html>
