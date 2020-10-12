@@ -17,6 +17,16 @@
             font-weight: bold;
         }
     </style>
+
+    <!-- Para poner el script en el header tenemos que asegurarnos
+	que la página está completamente cargada -->
+    <script>
+        // Se puede simplificar como vemos en la siguiente línea
+        // $(document).ready(() => $("ul").addClass("textoVerde"));
+
+        // $(() => $("ul").addClass("textoVerde"));
+        $(() => $("li:last-child").addClass("textoVerde"));
+    </script>
 </head>
 
 <body>
@@ -32,9 +42,14 @@
         <li>Negrita</li>
     </ul>
 
-    <script>
+    <!-- Los scripts deben ir al final para asegurarnos que
+	todos los elementos de la página estén cargados -->
+    <!-- <script>
+		// jQuery es igual que $, siendo ésta última la 
+		// más utilizada
+        // jQuery("ul").addClass("textoVerde");
         $("ul").addClass("textoVerde");
-    </script>
+    </script> -->
 </body>
 
 </html>
