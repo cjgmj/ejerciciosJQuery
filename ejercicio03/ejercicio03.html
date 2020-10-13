@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Ejercicio 03 - Eventos</title>
+
+    <!-- Importacion del jQuery -->
+    <script src="js/lib/jquery-3.5.1.min.js"></script>
+
+    <!-- Importacion del Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <style>
+        .img100 {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .divRojo {
+            background-color: red;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Eventos</h1>
+        <hr>
+
+        <button id="btn1" class="btn btn-primary">Evento click</button>
+
+        <br><br>
+
+        <img src="img/nophoto.jpg" class="img100" />
+
+        <br><br>
+
+        <div class="divRojo"></div>
+
+        <br><br>
+
+        <a id="linkGoogle" href="https://www.google.com">Ir a Google</a>
+
+        <script>
+            // Es recomendable usar las funciones a través del on
+            // Botón
+            // $("#btn1").click(() => console.log("Click"));
+            $("#btn1").on("click", () => console.log("Click"));
+
+            // Imagen
+            // $(".img100").mouseenter(() => console.log("Mouse enter"));
+            // $(".img100").on("mouseenter", () => console.log("Mouse enter"));
+            $(".img100").on("mouseenter", function() {
+                $(this).attr("src", "img/profesor.jpg");
+            });
+
+            // $(".img100").on("mouseover", () => console.log("Mouse over"));
+            // $(".img100").mouseover(() => console.log("Mouse over"));
+
+            // $(".img100").mouseleave(() => console.log("Mouse leave"));
+            // $(".img100").on("mouseleave", () => console.log("Mouse leave"));
+            $(".img100").on("mouseleave", function() {
+                $(this).attr("src", "img/nophoto.jpg");
+            });
+
+            // Contenedor
+            $(".divRojo").on("click", () => console.log("Click en el div rojo"));
+
+            // Link
+            $("#linkGoogle").on("click", function(event) {
+                event.preventDefault();
+
+                console.log("Click en el link");
+
+                let link = $(this).attr("href");
+
+                console.log(link);
+
+                window.location = link;
+            });
+
+            // Evento al cargar la página
+            $(document).ready(() => console.log("La página está lista"));
+        </script>
+</body>
+
+</html>
