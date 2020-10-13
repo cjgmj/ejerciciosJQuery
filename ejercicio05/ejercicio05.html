@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Ejercicio 05 On y Bind</title>
+
+    <!-- Importacion del jQuery -->
+    <script src="js/lib/jquery-3.5.1.min.js"></script>
+
+    <!-- Importacion del Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>On y Bind</h1>
+        <hr>
+
+        <h3>Click me</h3>
+    </div>
+
+    <script>
+        (function() {
+            let cont = 0;
+
+            // Funciona en los h3 creados pero no en los que genera la función
+            // $("h3").on("click", () => {
+            //     const h3Dinamico = "<h3>Dinámico</h3>";
+            //     // $("body").prepend(h3Dinamico); // Añade al principio
+            //     // $("body").append(h3Dinamico); // Añade al final
+            //     $(".container").append(h3Dinamico);
+            // });
+
+            // Para que funcione en todos los h3
+            $("body").on("click", "h3", () => {
+                cont++;
+
+                const h3Dinamico = `<h3 id=h3-${cont}>Dinámico ${cont}</h3><hr>`;
+
+                $(".container").append(h3Dinamico);
+
+                // Asigna una función para un elemento determinado
+                if (cont === 3) {
+                    $("#h3-2").bind("click", () => console.log("Función dinámica"));
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>
