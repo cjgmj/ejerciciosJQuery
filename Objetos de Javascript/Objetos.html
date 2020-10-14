@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Objetos básicos</title>
+
+    <!-- Importacion del jQuery -->
+    <script src="js/lib/jquery-3.5.1.min.js"></script>
+
+    <!-- Importacion del Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <div class="container text-center">
+        <h1>Objetos: <small>Comprendiendo lo básico</small></h1>
+        <hr>
+
+        <button id="botonArrancar" class="btn btn-primary">Arrancar</button>
+        <button id="botonParar" class="btn btn-danger">Parar</button>
+        <script>
+            let coche = {
+                arrancado: false,
+                llantas: 4,
+                puertas: 5,
+                fabricante: {
+                    nombre: "Toyota",
+                    telefono: 999999999,
+                    direccion: "Calle falsa 123"
+                },
+                colores: ["Azul", "Blanco", "Rojo", "Negro"],
+
+                arrancar: function() {
+                    if (!this.arrancado) {
+                        this.arrancado = true;
+                        console.log("El vehículo arrancó");
+                    } else {
+                        console.log("El vehículo está arrancado");
+                    }
+                },
+                parar: function() {
+                    if (this.arrancado) {
+                        this.arrancado = false;
+                        console.log("El vehículo se paró");
+                    } else {
+                        console.log("El vehículo está parado");
+                    }
+                }
+            };
+
+            console.log(coche);
+            console.log(coche.colores[5]); // Si excede el tamaño devuelve undefined
+            console.log(coche.fabricante.direccion);
+
+            coche.fabricante.direccion = "Calle Wallaby, 42, Sidney";
+
+            console.log(coche.fabricante.direccion);
+
+            coche.arrancar();
+            coche.parar();
+
+            $("#botonArrancar").on("click", () => coche.arrancar());
+            $("#botonParar").on("click", () => coche.parar());
+        </script>
+    </div>
+</body>
+
+</html>
