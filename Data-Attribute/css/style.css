@@ -1,0 +1,15 @@
+.cmbCoche {
+    position: relative;
+    top: -150px;
+}
+
+.divPreloader {
+    position: absolute;
+    opacity: 0.4;
+}
+
+@media (max-width: 1000px) {
+    .cmbCoche {
+        top: -50px;
+    }
+}
