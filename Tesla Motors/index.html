@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Presentacion de Vehículo</title>
+
+    <!-- Importacion del jQuery -->
+    <script src="js/lib/jquery-3.5.1.min.js"></script>
+
+    <!-- Importacion del Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container text-center">
+        <h1>Objetos Prácticos: <small>Ejemplo de vehículo</small></h1>
+        <hr>
+
+
+        <div class="divPreloader">
+            <img src="img/loading.gif" class="imgLoader img-fluid">
+        </div>
+
+
+        <div class="divVistaPrevia">
+            <img id="imgCoche" class="img-fluid">
+        </div>
+
+        <div class="form-group cmbCoche" align="center">
+            <div class="col-sm-offset-4 col-sm-5">
+                <select id="cmbColor" class="form-control">
+	      		<!-- <option value="blanco">Blanco</option>
+	      		<option value="negro">Negro</option>
+	      		<option value="rojo">Rojo</option> -->
+	      	</select>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        (function() {
+            const teslaView = {
+                loader: $(".divPreloader"),
+                colores: ["azul", "blanco", "cafe", "gris"],
+
+                cambiarColor: function(img) {
+                    const $loader = this.loader;
+
+                    $loader.fadeIn(150);
+
+                    if (img === undefined) {
+                        img = `img/tesla/modelS-${this.colores[0]}.jpg`;
+                    }
+
+                    $("<img>", {
+                        src: img,
+                        class: "img-fluid"
+                    }).on("load", function() {
+                        $(".divVistaPrevia").find("img").remove(); // Busca todas las imágenes en el div y las elimina
+                        $(this).appendTo(".divVistaPrevia");
+
+                        $loader.fadeOut(150);
+                    });
+                },
+
+                // Función principal
+                init: function(opciones) {
+                    // Sustituye el valor enviado en las propiedades correspondientes
+                    $.extend(teslaView, opciones);
+
+                    for (const color of this.colores) {
+                        $("<option>", {
+                            value: color,
+                            text: color
+                        }).appendTo("#cmbColor");
+                    }
+
+                    // Al estar dentro de una función no se puede llamar con on
+                    $("#cmbColor").bind("change", function() {
+                        const color = $(this).val(); // Obtiene el color del combobox
+
+                        const url = `img/tesla/modelS-${color}.jpg`;
+
+                        teslaView.cambiarColor(url);
+                    });
+
+                    // Cargar imagen al iniciar
+                    teslaView.cambiarColor();
+                }
+            };
+
+            teslaView.init({
+                colores: ["azul", "blanco", "cafe", "gris", "negro", "rojo", "rojooscuro", "verde"]
+            });
+
+            // Se cambia a objeto para mejorarlo
+            // $("#cmbColor").on("change", function() {
+            //     const color = $(this).val(); // Obtiene el color del combobox
+
+            //     const url = `img/tesla/modelS-${color}.jpg`;
+            //     $("#imgCoche").attr("src", url);
+            // });
+        })();
+    </script>
+</body>
+
+</html>
