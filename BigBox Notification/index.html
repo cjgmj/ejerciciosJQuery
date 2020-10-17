@@ -17,22 +17,29 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div class="bigbox-fondo"></div>
-
-    <div class="bigbox-contenedor" align="center">
-      <div class="bigbox-cerrar"><i class="fa fa-times"></i></div>
-      <div class="bigbox-circulo"><i class="fa fa-thumbs-o-up fa-3x"></i></div>
-      <div class="bigbox-contenido">
-        <span class="bigbox-titulo">Genial</span>
-        <span class="bigbox-texto">Estamos listos para continuar</span>
-      </div>
-
-      <button class="bigbox-boton">Continuar</button>
-    </div>
-
     <div class="container">
       <h1>BigBox: <small>Notification</small></h1>
       <hr />
+
+      <button class="btn btn-primary">Mostrar BigBox</button>
     </div>
+
+    <script src="js/bigbox.js"></script>
+
+    <script>
+      $("button").on("click", () =>
+        $.bigbox(
+          {
+            fa: "fa-codiepie",
+            titulo: "Genial",
+            contenido: "Estamos listos para continuar",
+            boton: "Continuar",
+          },
+          (boton) => {
+            console.log(boton);
+          }
+        )
+      );
+    </script>
   </body>
 </html>

@@ -19,7 +19,7 @@ body {
   height: 100%;
 
   background-color: black;
-  opacity: 0.4;
+  opacity: 0;
 
   z-index: 998;
 }
@@ -30,6 +30,7 @@ body {
   left: 150px;
 
   width: 600px;
+  opacity: 0;
 
   background-color: #f4f4f4;
   border: 1px solid #a9a9a9;
