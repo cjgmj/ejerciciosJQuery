@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Small Notification</title>
+
+    <!-- Importacion del jQuery -->
+    <script src="js/lib/jquery-3.5.1.min.js"></script>
+
+    <script src="js/lib/TweenMax.min.js"></script>
+
+    <script src="js/notification.js"></script>
+
+    <!-- Importacion del Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Notification</h1>
+      <hr />
+
+      <div class="container page-header">
+        <button id="bot1" class="btn btn-primary">Básica</button>
+        <button id="bot2" class="btn btn-primary">Sin imagen</button>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#bot1").on("click", function () {
+          $.sbNotification({
+            img: "img/foto.jpg",
+            titulo: "John Doe",
+            subtitulo: "London, England",
+          });
+        });
+
+        $("#bot2").on("click", function () {
+          $.sbNotification({
+            titulo: "Alerta",
+            subtitulo: "Beba agua",
+            fa: "fa-moon-o",
+            color: "aqua",
+            timeout: 5000,
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
