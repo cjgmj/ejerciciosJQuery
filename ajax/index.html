@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Ajax INSERT</title>
+    <title>Ajax SELECT</title>
 
     <!-- Importacion del jQuery -->
     <script src="js/lib/jquery-3.5.1.min.js"></script>
@@ -12,6 +12,8 @@
     <!-- Importacion del Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
 
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" />
+
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -19,21 +21,26 @@
       <h1>Peticiones Ajax, <small> jquery</small></h1>
       <hr />
 
-      <form class="form-horizontal" id="frmData">
-        <label>Nombre</label>
-        <input type="text" name="txtNombre" class="form-control" />
+      <div class="text-right mb-2">
+        <a href="insert.html" class="btn btn-primary">
+          <i class="fa fa-plus"></i> Insertar registro
+        </a>
+      </div>
 
-        <label> Estado</label>
-        <select name="cmbEstado" class="form-control">
-          <option value="activo">Activo</option>
-          <option value="eliminado">Eliminado</option>
-        </select>
+      <table class="table table-stripe">
+        <thead>
+          <tr>
+            <td class="w50">ID</td>
+            <td>Nombre</td>
+            <td class="w50">Actualizar</td>
+            <td class="w50">Eliminar</td>
+          </tr>
+        </thead>
 
-        <br />
-        <button type="submit" class="btn btn-primary">Guardar</button>
-      </form>
+        <tbody id="tblRegistros"></tbody>
+      </table>
     </div>
 
-    <script src="js/ajax.js"></script>
+    <script src="js/select.js"></script>
   </body>
 </html>
