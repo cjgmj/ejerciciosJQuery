@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 (function () {
   $(document).ready(function () {
     $.ajax({
@@ -15,7 +17,7 @@
         }
 
         data.alumnos.forEach(function (element, index) {
-          let content = "<tr>";
+          let content = `<tr id="fila${element.id}">`;
           content += `<td>${element.id}</td>`;
           content += `<td>${element.nombre}</td>`;
           content += '<td class="text-center">';
@@ -24,7 +26,7 @@
           content += "</a>";
           content += "</td>";
           content += '<td class="text-center">';
-          content += `<a href="" data-id="${element.id}" class="btn btn-danger">`;
+          content += `<a href="" data-nombre="${element.nombre}" data-id="${element.id}" class="btn btn-danger btnEliminar">`;
           content += '<i class="fa fa-trash-o"></i>';
           content += "</a>";
           content += "</td>";
@@ -41,5 +43,54 @@
       .always(function () {
         console.log("Completo!");
       });
+  });
+
+  // Borrar en base de datos
+  const borrarRegistro = function (id) {
+    $.ajax({
+      type: "POST",
+      url: `php/servicios/post.eliminaralumno.php?id=${id}`,
+      dataType: "json",
+    })
+      .done(function (data) {
+        console.log("Correcto!");
+
+        console.log(data); // Se imprime en consola la api
+
+        $(`#fila${id}`).remove();
+      })
+      .fail(function (jqXHR, textStatus, errorThrown) {
+        console.log("Fallo!");
+
+        console.log(errorThrown);
+      })
+      .always(function () {
+        console.log("Completo!");
+      });
+  };
+
+  // Capturar evento en elemento dinámico
+  $("body").on("click", ".btnEliminar", function (e) {
+    e.preventDefault();
+
+    const id = $(this).data("id");
+
+    console.log(id);
+
+    Swal.fire({
+      title: "¿Está seguro?",
+      text: `Vas a borrar al alumno ${$(this).data("nombre")}`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí",
+      cancelmButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        borrarRegistro(id);
+        Swal.fire("¡Eliminado!", "El alumno ha sido eliminado", "success");
+      }
+    });
   });
 })();

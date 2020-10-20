@@ -7,7 +7,7 @@ if ( isset($_GET['id']) ) {
 	$id = $_GET['id'];
 
 	if( is_numeric( $id ) ){
-    	$sql = "SELECT * FROM alumnos where id = $id";
+    	$sql = "SELECT * FROM alumnos WHERE id = $id";
 	}else{
 		$respuesta = array(
 			'error' => true, 
@@ -18,7 +18,7 @@ if ( isset($_GET['id']) ) {
 	}
 
 }else{
-    $sql = "SELECT * FROM alumnos order by nombre asc";
+    $sql = "SELECT * FROM alumnos ORDER BY nombre ASC";
 }
 
 
