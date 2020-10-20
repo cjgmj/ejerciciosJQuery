@@ -22,11 +22,18 @@
       <hr />
 
       <form class="form-horizontal" id="frmData">
+        <input type="hidden" name="txtId" id="txtId" />
+
         <label>Nombre</label>
-        <input type="text" name="txtNombre" class="form-control" />
+        <input
+          type="text"
+          name="txtNombre"
+          id="txtNombre"
+          class="form-control"
+        />
 
         <label> Estado</label>
-        <select name="cmbEstado" class="form-control">
+        <select name="cmbEstado" id="cmbEstado" class="form-control">
           <option value="activo">Activo</option>
           <option value="eliminado">Eliminado</option>
         </select>
@@ -41,6 +48,6 @@
       </form>
     </div>
 
-    <script src="js/insert.js"></script>
+    <script src="js/update.js"></script>
   </body>
 </html>
