@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Elementos DOM</h1>
+    <p>Podemos contar cuantos elementos hay en el DOM.</p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere possimus
+      dolorum illum iusto voluptates commodi magnam suscipit laboriosam,
+      quibusdam ad. Nam pariatur tempora tempore incidunt voluptates earum, quia
+      sit laboriosam?
+    </p>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      const h1Size = $("h1").length;
+      const pSize = $("p").length;
+      const ulSize = $("ul").length;
+      const total = $("*").length;
+
+      console.log(`Hay ${h1Size} h1`);
+      console.log(`Hay ${pSize} h1`);
+      console.log(`Hay ${ulSize} h1`);
+      console.log(`Hay ${total} elementos en la página`);
+    </script>
+  </body>
+</html>
