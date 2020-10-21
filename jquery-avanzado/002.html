@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Agregar función a una página</h1>
+    <p>
+      Es posible agregar funciones para que se ejecute en una determinada página
+    </p>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      const route = {
+        _routes: {},
+        add: function (url, action) {
+          this._routes[url] = action;
+        },
+        run: function () {
+          // El pattern es la ruta url
+          $.each(this._routes, function (pattern) {
+            // Se comprueba que el url hace match con el patrón
+            if (location.href.match(pattern)) {
+              this();
+            }
+          });
+        },
+      };
+
+      route.add("002.html", () => {
+        console.log("Este código solo funciona en la página 002.html");
+      });
+
+      route.add("about.html", () => {
+        console.log("Este código solo funciona en la página about.html");
+      });
+
+      route.add(".*.html", () => {
+        console.log("Este código funciona en cualquier página html");
+      });
+
+      route.run();
+    </script>
+  </body>
+</html>
