@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Separar elementos URL con anchor tags</h1>
+    <p>
+      A través de las propiedades de los anchor tags podemos extraer datos del
+      URL como pueden ser el protocolo, la dirección, el query, el hash...
+    </p>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      const url =
+        "https://www.google.com/search?q=vscode&oq=vscode&aqs=chrome..69i57j69i59j0l2j69i60l4.919j0j7&sourceid=chrome&ie=UTF-8#comentarios";
+
+      const $a = $("<a>", {
+        href: url,
+      });
+
+      console.log($a);
+      console.log("Host name: ", $a.prop("hostname"));
+      console.log("Path: ", $a.prop("pathname"));
+      console.log("Query: ", $a.prop("search"));
+      console.log("Protocolo: ", $a.prop("protocol"));
+      console.log("Hash: ", $a.prop("hash"));
+
+      // Extraer el query
+      console.log($a.prop("search").replace("?", "").split("&"));
+    </script>
+  </body>
+</html>
