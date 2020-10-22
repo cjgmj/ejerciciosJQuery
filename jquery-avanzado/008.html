@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Modificar links y colocar iconos</h1>
+    <p>
+      Podemos filtrar los links externos de nuestra página web para, por
+      ejemplo, abrirlo en una nueva ventana además de añadirle un icono.
+    </p>
+
+    <ul id="links">
+      <li>
+        <a href="001.html">Ir al 001.html</a>
+      </li>
+      <li>
+        <a href="006.html">Ir al 006.html</a>
+      </li>
+      <li>
+        <a href="https://www.google.com">Ir a Google</a>
+      </li>
+    </ul>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      $("#links a").each(function () {
+        // console.log(this.hostname);
+        // console.log(location.hostname);
+
+        if (this.hostname != location.hostname) {
+          $(this)
+            .append(' <img src="assets/img/external.png" />')
+            .attr("target", "_blank");
+        }
+      });
+    </script>
+  </body>
+</html>
