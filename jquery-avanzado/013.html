@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <div id="divEditable">
+      <h1>Hacer contenido editable</h1>
+      <p>
+        Podemos indicar que un contenido puede ser editable mediante jQuery,
+        incluyendo el estilo, siempre que el estilo esté dentro de el body.
+      </p>
+    </div>
+
+    <button type="button" class="btn btn-primary">Guardar</button>
+
+    <style id="divEstilo">
+      html {
+        background-color: red;
+        position: relative;
+      }
+
+      body {
+        font-size: 20px;
+        color: blue;
+      }
+    </style>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      // $("h1, p").attr("contentEditable", true); // Esto permite editar todos los h1 y todos los p
+
+      // Mostrar el tag style en el html y permitir editarlo
+      // $("#divEstilo")
+      //   .css({
+      //     display: "block",
+      //     "white-space": "pre",
+      //   })
+      //   .attr("contentEditable", true);
+
+      // Guardar contenido editado
+      $("#divEditable").attr("contentEditable", true);
+      $("button").on("click", function () {
+        const contenido = $("#divEditable").text();
+        const contenidoHtml = $("#divEditable").html();
+        console.log(contenido);
+        console.log(contenidoHtml);
+      });
+    </script>
+  </body>
+</html>
