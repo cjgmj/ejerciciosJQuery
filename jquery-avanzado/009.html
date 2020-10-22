@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Método end()</h1>
+    <p>
+      Podemos volver al selector después de hacer un cambio llamando a la
+      función end() para así mejorar la eficiencia ya que no tiene que volver a
+      buscar en el DOM el elemento.
+    </p>
+
+    <ul id="desayuno">
+      <li class="huevos">No</li>
+      <li class="tostadas">No</li>
+      <li class="zumo">No</li>
+    </ul>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      // Esto no es eficiente
+      // $(".huevos").text("Sí");
+      // $(".tostadas").text("Sí");
+      // $(".zumo").text("Sí");
+
+      const $desayuno = $("#desayuno");
+
+      $desayuno
+        .find(".huevos")
+        .text("Sí")
+        .end()
+        .find(".tostadas")
+        .text("Sí")
+        .end()
+        .find(".zumo")
+        .text("Sí");
+    </script>
+  </body>
+</html>
