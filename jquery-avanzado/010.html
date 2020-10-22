@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+
+    <style>
+      .menu {
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Prevenir click derecho y crear menú personalizado</h1>
+    <p>
+      Podemos bloquear el click derecho en nuestra página y mostrar un menú
+      personalizado en lugar del menú que aparece por defecto con el click
+      derecho
+    </p>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      $(() => {
+        $(document).on("contextmenu", function (e) {
+          e.preventDefault(); // Evita que se muestre el menú
+
+          // console.log(e);
+          console.log(e.offsetX, e.offsetY);
+
+          $(".menu").remove(); // Elimina los menús anteriores
+
+          const div = $("<div>", {
+            class: "menu",
+            css: {
+              top: e.offsetY,
+              left: e.offsetX,
+            },
+            animate: {
+              width: 100,
+              height: 300,
+            },
+          });
+
+          div.appendTo("body"); // Añade el menú creado al body
+        });
+      });
+    </script>
+  </body>
+</html>
