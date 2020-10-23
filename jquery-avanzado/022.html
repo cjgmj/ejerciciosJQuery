@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Desenlazar elementos del DOM</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor.
+    </p>
+
+    <div id="element" style="background: blue"></div>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      let i = 0;
+      const iteraciones = 1000;
+      const $element = $("#element");
+
+      console.time("Enlazado DOM");
+
+      for (i = 0; i < iteraciones; i++) {
+        $element.width(Math.round(Math.random() * 100));
+        $element.height(Math.round(Math.random() * 100));
+      }
+
+      console.timeEnd("Enlazado DOM");
+
+      console.time("Separado DOM");
+
+      const $parent = $element.parent();
+
+      $element.detach(); // Separa el elemento del DOM
+
+      for (i = 0; i < iteraciones; i++) {
+        $element.width(Math.round(Math.random() * 100));
+        $element.height(Math.round(Math.random() * 100));
+      }
+
+      $element.appendTo($parent);
+
+      console.timeEnd("Separado DOM");
+    </script>
+  </body>
+</html>
