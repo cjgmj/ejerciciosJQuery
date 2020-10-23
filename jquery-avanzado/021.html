@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Tratar objectos jQuery como arrays</h1>
+    <p>
+      Los ciclos nativos son más rápidos que los ciclos o algunos procesos de
+      jQuery, por lo que, deberíamos usar estos elementos obtenidos por jQuery
+      pero como si fueran arrays de JavaScript, de esta forma la aplicación será
+      más eficiente.
+    </p>
+
+    <ul>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+    </ul>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      const arr = $("li");
+      const iteraciones = 100000;
+
+      console.time("Ciclo nativo");
+
+      for (let i = 0; i < iteraciones; i++) {
+        const largo = arr.length;
+
+        for (let j = 0; j < largo.length; j++) {
+          arr[j];
+        }
+      }
+
+      console.timeEnd("Ciclo nativo");
+
+      console.time("Ciclo jQuery");
+
+      for (let i = 0; i < iteraciones; i++) {
+        arr.each(function (i, val) {
+          this;
+        });
+      }
+
+      console.timeEnd("Ciclo jQuery");
+    </script>
+  </body>
+</html>
