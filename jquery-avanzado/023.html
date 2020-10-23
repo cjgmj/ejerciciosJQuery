@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Delegar evento a jQuery</h1>
+    <p>
+      Podemos especificar a jQuery que esté pendiente de un elemento que cumpla
+      cierta condición para poder añadir, por ejemplo, funciones antes de que el
+      elemento sea creado.
+    </p>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      // $("button").on("click", () => console.log("Hola mundo")); // No funciona al no estar creado el botón
+
+      $(document).on("click", "button", () => console.log("Hola mundo"));
+    </script>
+
+    <button type="button" class="btn btn-primary">Click me!</button>
+  </body>
+</html>
