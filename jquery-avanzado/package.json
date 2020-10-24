@@ -1,0 +1,15 @@
+{
+  "name": "jquery-avanzado",
+  "version": "1.0.0",
+  "description": "100 trucos de jQuery",
+  "main": "index.js",
+  "scripts": {
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cjgmj",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.5.4"
+  }
+}
