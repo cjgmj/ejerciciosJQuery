@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Única llamada de un evento</h1>
+    <p>
+      Podemos hacer que una acción se ejecute solo la primera vez que es lanzada
+      mediante el método one().
+    </p>
+
+    <button type="button" id="btnAccion">Click me</button>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      const $boton = $("#btnAccion");
+
+      $boton.one("click", function () {
+        alert("Hola mundo");
+      });
+    </script>
+  </body>
+</html>
