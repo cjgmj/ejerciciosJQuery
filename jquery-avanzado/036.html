@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Lanzar peticiones ajax en paralelo</h1>
+    <p>
+      Podemos lanzar varias tareas asíncronas con el método when() y cuando
+      acaben todas hacer algo con la respuestas de las mismas mediante el método
+      then(). Cada parámetro de la función del then contiene toda la información
+      acerca de la petición realizada.
+    </p>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      $.when($.get("assets/data/1.json"), $.get("assets/data/2.json"))
+        .then((resp1, resp2) =>
+          console.log(`${resp1[0].mensaje} ${resp2[0].nombre}`)
+        )
+        .catch((err) => console.error("Error"));
+    </script>
+  </body>
+</html>
