@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Serializar objetos</h1>
+    <p>
+      Hay distintas formas de serializar objetos con jQuery, podemos
+      serializarlos directamente desde un formulario con el método serialize() o
+      podemos serializar el objeto directamente a través de param(). Con
+      serializeArray() obtenemos la serialización como un array.
+    </p>
+
+    <form id="form">
+      <input type="text" name="cantante" value="Ed Sheeran" />
+      <input type="email" name="email" value="ed@sheeran.com" />
+      <textarea name="song">I see fire</textarea>
+    </form>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      const $form = $("#form");
+
+      console.log($form.serialize());
+
+      console.log("-----------------------");
+
+      const mascota = {
+        tipo: "perro",
+        nombre: "Tobby",
+      };
+
+      console.log($.param(mascota));
+
+      console.log("-----------------------");
+
+      console.log($form.serializeArray());
+    </script>
+  </body>
+</html>
