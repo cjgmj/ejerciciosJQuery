@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Mostrar el tamaño de los archivos a descargar</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor.
+    </p>
+
+    <a class="fetchSize" href="001.html">Archivo 001.html</a>
+    <a class="fetchSize" href="034.html">Archivo 034.html</a>
+    <a class="fetchSize" href="assets/img/ball.png">Pelota</a>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      const humanizar = (size) => {
+        const unidades = ["bytes", "KB", "MB", "GB", "TB"];
+
+        let ord = Math.floor(Math.log(size) / Math.log(1024));
+        ord = Math.min(Math.max(0, ord), unidades.length - 1);
+
+        // const s = Math.round((size / Math.pow(1024, ord)) * 100) / 100;
+        const s = Math.round(size / Math.pow(1024, ord)); // Redondeado
+        return `${s} ${unidades[ord]}`;
+      };
+
+      $(".fetchSize").each(function () {
+        const _this = this;
+
+        $.ajax({
+          type: "HEAD",
+          url: _this.href,
+          complete: (xhr) => {
+            const size = xhr.getResponseHeader("Content-Length");
+
+            $(_this).append(` (${humanizar(size)})`);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
