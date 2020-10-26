@@ -1,3 +1,7 @@
-body{
+body {
   margin: 30px;
+}
+
+#preloader {
+  display: none;
 }
