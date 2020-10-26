@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Subida archivos binarios</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor.
+    </p>
+
+    <input type="file" id="inputSubir" />
+    <button id="btnSubir" type="button">Subir archivo</button>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      const $fileInput = $("#inputSubir"),
+        $boton = $("#btnSubir");
+
+      $boton.on("click", () => {
+        const archivos = $fileInput.prop("files");
+
+        if (archivos.length === 0) {
+          alert("Por favor seleccione algún archivo");
+          return;
+        }
+
+        const formData = new FormData();
+
+        formData.append("file", archivos[0]);
+
+        $.ajax({
+          url: "assets/data/upload.php",
+          data: formData,
+          contentType: false,
+          processData: false,
+          type: "POST",
+          success: (resp) => console.log(resp),
+        });
+      });
+    </script>
+  </body>
+</html>
