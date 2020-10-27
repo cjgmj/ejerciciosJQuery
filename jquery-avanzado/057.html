@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Convertir imagen en blanco y negro</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor.
+    </p>
+
+    <button id="btn">Blanco y negro</button>
+
+    <canvas id="can" width="220" height="319"></canvas>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      const $img = $("<img>"),
+        $canvas = $("#can")[0],
+        context = $canvas.getContext("2d"),
+        $boton = $("#btn");
+
+      $img.on("load", function () {
+        context.drawImage(this, 0, 0);
+      });
+
+      $img.attr("src", "assets/img/Katy_Perry.jpg");
+
+      $boton.on("click", () => {
+        const imageData = context.getImageData(
+            0,
+            0,
+            $canvas.width,
+            $canvas.height
+          ),
+          px = imageData.data;
+        let gray = 0;
+
+        for (let i = 0; i < px.length; i += 4) {
+          gray = (px[i] + px[i + 1] + px[i + 2]) / 3;
+
+          px[i] = gray; // Red
+          px[i + 1] = gray; // Green
+          px[i + 2] = gray; // Blue
+        }
+
+        context.putImageData(imageData, 0, 0);
+      });
+    </script>
+  </body>
+</html>
