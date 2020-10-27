@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Trabajar con la consola</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor.
+    </p>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      // alert("Hola mundo"); // Detiene el proceso de la aplicación
+
+      // console.log("Hola de nuevo"); // Hasta que no se cierra el alert no se ejecuta
+
+      // Reemplazar variables
+      const a = "buenos",
+        b = "días";
+      console.log("Hola, %s %s", a, b);
+
+      // Imprimir objeto completo
+      console.dir(window);
+
+      // Distintos tipos de mensajes
+      console.info("Información");
+      console.warn("Alerta");
+      console.error("Error");
+
+      // Contador
+      for (let i = 0; i < 10; i++) {
+        console.count("Vamos por");
+      }
+
+      // Agrupar mensajes de consola
+      console.group("Function main");
+
+      console.log("Comienza");
+      console.info("En camino");
+      console.warn("Llegando");
+      console.error("Chocamos");
+
+      console.groupEnd();
+
+      // Medir tiempo
+      console.time("suma");
+
+      let sum = 0;
+      for (let i = 0; i < 100000; i++) {
+        sum += 10;
+      }
+
+      console.timeEnd("suma");
+
+      // Ver traza de la llamada
+      function test() {
+        console.trace();
+      }
+
+      test();
+    </script>
+  </body>
+</html>
