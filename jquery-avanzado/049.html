@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Funciones anónimas para aislar código</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor.
+    </p>
+
+    <button type="button">Contar</button>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      let c = 1;
+
+      // $.fn.count = function () {
+      //   console.log(c++);
+      //   return this;
+      // };
+
+      // $("button").on("click", () => {
+      //   $("body").count();
+      // });
+
+      // Solución conflicto con librería externa
+      (function ($) {
+        let c = 1;
+
+        $.fn.count = function () {
+          console.log(c++);
+          return this;
+        };
+
+        $("button").on("click", () => {
+          $("body").count();
+        });
+      })(jQuery);
+
+      // Simulando código de librería externa
+      setInterval(() => c++, 500); // Esto provoca error a nuestro contador
+    </script>
+  </body>
+</html>
