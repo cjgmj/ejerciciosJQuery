@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Enviar callbacks a métodos jQuery</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor.
+    </p>
+
+    <input id="input1" style="width: 60px" type="text" />
+    <input id="input2" style="width: 60px" type="text" />
+    <input id="input3" style="width: 60px" type="text" />
+
+    <p class="lipsum">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+
+    <p class="lipsum">
+      Aenean dapibus turpis ut justo congue id sodales mi dignissim.
+    </p>
+
+    <p class="lipsum">
+      In sed lorem elit, sit amet mollis enim. Integer at feugiat
+    </p>
+
+    <p class="lipsum">
+      Integer dignissim, neque eu varius dignissim, risus lacus accum
+    </p>
+
+    <p class="lipsum">Proin tempus.</p>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      $("input[type=text") // Selector para los inputs con type text
+        // Asignamos el valor del id al texto del input
+        .val(function () {
+          return this.id;
+        });
+
+      let $p = $(".lipsum");
+
+      // Ocultamos todos los párrafos que contengan la palabra lorem
+      // Se añade i en la expresión para ignorar mayúsculas y minúsculas
+      $p.filter(function () {
+        return $(this).text().match(/lorem/i) != null;
+      }).hide();
+
+      // Obtenemos solo los párrafos visibles
+      $p = $p.filter(":visible");
+
+      // Añadir texto delante de cada párrafo
+      $p.prepend((index) => `${index + 1}) `);
+
+      // Colores para pares e impares
+      $p.css("color", (index) => (index % 2 == 1 ? "blue" : "green"));
+
+      // Controlar tamaño del texto
+      $p.html(function () {
+        const contenido = $(this).text();
+
+        if (contenido.length > 40) {
+          return `${contenido.slice(0, 40)}...`;
+        }
+      });
+
+      // Comprobar si el primer párrafo es verde
+      console.log(
+        "¿El primer párrafo es verde?",
+        $p.first().is(function () {
+          console.log($(this).css("color"));
+
+          return $(this)
+            .css("color")
+            .match(/green|rgb\(0, 128, 0\)|#00FF00/i);
+        })
+      );
+
+      // Comprobar si el segundo párrafo es verde
+      console.log(
+        "¿El segundo párrafo es verde?",
+        $p
+          .first()
+          .next()
+          .is(function () {
+            console.log($(this).css("color"));
+
+            return $(this)
+              .css("color")
+              .match(/green|rgb\(0, 128, 0\)|#00FF00/i);
+          })
+      );
+
+      // Comprobar si el tercer párrafo es verde
+      console.log(
+        "¿El segundo tercer es verde?",
+        $p.eq(2).is(function () {
+          console.log($(this).css("color"));
+
+          return $(this)
+            .css("color")
+            .match(/green|rgb\(0, 128, 0\)|#00FF00/i);
+        })
+      );
+    </script>
+  </body>
+</html>
