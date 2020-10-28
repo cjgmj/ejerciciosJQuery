@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+
+    <style media="screen">
+      #football {
+        position: fixed;
+        left: 50%;
+        bottom: 500px;
+        opacity: 0;
+        z-index: 1000;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Animaciones personalizadas</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor.
+    </p>
+
+    <button id="btnShow">Mostrar</button>
+    <button id="btnHide">Ocultar</button>
+
+    <img id="football" src="assets/img/ball.png" />
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      jQuery.easing.rebote = (x, t, b, c, d) => {
+        if ((t /= d) < 1 / 2.75) {
+          return c * (7.5625 * t * t) + b;
+        } else if (t < 2 / 2.75) {
+          return c * (7.5625 * (t -= 1.5 / 2.75) * t + 0.75) + b;
+        } else if (t < 2.5 / 2.75) {
+          return c * (7.5625 * (t -= 2.25 / 2.75) * t + 0.9375) + b;
+        } else {
+          return c * (7.5625 * (t -= 2.625 / 2.75) * t + 0.984375) + b;
+        }
+      };
+
+      const $ball = $("#football");
+
+      // Solo con position: fixed;
+      // $("#btnShow").on("click", () => {
+      //   $ball.animate(
+      //     // Posición en la que quedará el objeto
+      //     {
+      //       bottom: 0,
+      //       right: 0,
+      //     },
+      //     // Tiempo que tarda la animación en completarse
+      //     1000,
+      //     // Tipo de animación
+      //     // "linear"
+      //     "swing"
+      //   );
+      // });
+
+      $("#btnShow").on("click", () => {
+        // Para volver a animar un elemento hay que parar la animación anterior
+        $ball.stop().animate(
+          // Posición en la que quedará el objeto
+          {
+            bottom: 0,
+            opacity: 1,
+          },
+          // Tiempo que tarda la animación en completarse
+          1500,
+          // Tipo de animación
+          "rebote"
+        );
+      });
+
+      $("#btnHide").on("click", () => {
+        // Para volver a animar un elemento hay que parar la animación anterior
+        $ball.stop().animate(
+          // Posición en la que quedará el objeto
+          {
+            bottom: 500,
+            opacity: 0,
+          }
+        );
+      });
+    </script>
+  </body>
+</html>
