@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+
+    <style>
+      #divNotificaciones {
+        position: fixed;
+        top: 20px;
+        right: 0px;
+      }
+
+      .notificacion {
+        width: 200px;
+        height: 50px;
+        background-color: rgb(83, 17, 113);
+        color: white;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="divNotificaciones"></div>
+
+    <h1>Obtener parámetros de elementos del DOM</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor.
+    </p>
+
+    <button type="button">Crear un nuevo elemento</button>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      const $divNotificaciones = $("#divNotificaciones");
+
+      $("button").on("click", () => {
+        const rand = Math.round(Math.random() * 10);
+
+        let content = `<div class="notificacion" data-numero="${rand}">`;
+        content += `Número random ${rand} `;
+        content += '<a href="#">X</a>';
+        content += "</div>";
+
+        $divNotificaciones.append(content);
+      });
+
+      // Imprime el número de la notificación
+      $divNotificaciones.on("click", ".notificacion", function () {
+        const numero = $(this).data("numero");
+
+        console.log(numero);
+      });
+
+      // Elimina notificación
+      $divNotificaciones.on("click", ".notificacion a", function () {
+        $(this)
+          .parent()
+          .slideUp(500, function () {
+            $(this).remove();
+          });
+      });
+    </script>
+  </body>
+</html>
