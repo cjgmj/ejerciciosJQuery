@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Simplificar funciones fecha y tiempo</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor.
+    </p>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+      charset="utf-8"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/es.js"
+      charset="utf-8"
+    ></script>
+    <script>
+      const fecha = new Date();
+      console.log("Fecha JavaScript", fecha);
+
+      const hoy = moment();
+      console.log("Fecha moment.js", hoy);
+
+      console.log("-------------");
+
+      console.log("Hora actual", hoy.format("HH:mm:ss"));
+
+      console.log("-------------");
+
+      const otraFecha = moment([2019, 9, 12, 18, 29]);
+
+      console.log("Otra fecha", otraFecha);
+      console.log("Mes con tres letras", otraFecha.format("MMM"));
+      console.log("Mes", otraFecha.format("MMMM"));
+
+      console.log("-------------");
+
+      const diaSemana = moment().day();
+      console.log("Día semana", diaSemana);
+      console.log("Objeto moment", moment);
+      console.log("Día semana", moment.weekdays()[diaSemana]);
+
+      console.log("-------------");
+
+      const mes = moment().month();
+      console.log("Mes", mes);
+      console.log("Mes", moment.months()[mes]);
+
+      console.log("-------------");
+
+      console.log("Hora en Londres", moment.utc().format("HH:mm:ss"));
+      console.log(
+        "Hora en Japón",
+        moment.utc().add(9, "hours").format("HH:mm:ss")
+      );
+
+      console.log("-------------");
+
+      console.log(
+        "Próximo verano",
+        moment("Junio 21, 2021", "MMM DD, YYYY").fromNow()
+      );
+
+      console.log("-------------");
+
+      console.log(
+        "Fecha dentro de 7 días",
+        moment().add(7, "days").format("MMMM Do, YYYY")
+      );
+
+      console.log("-------------");
+
+      const desayuno = moment("10:00", "HH:mm");
+      const almuerzo = moment("15:00", "HH:mm");
+      console.log(
+        "Tiempo entre el desayuno y el almuerzo",
+        moment.duration(almuerzo - desayuno)
+      );
+      console.log(
+        "Tiempo entre el desayuno y el almuerzo",
+        moment.duration(almuerzo - desayuno).humanize()
+      );
+    </script>
+  </body>
+</html>
