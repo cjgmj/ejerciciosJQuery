@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <style>
+      #cajaAzul {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Controlar animaciones por CSS</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor.
+    </p>
+
+    <div id="cajaAzul"></div>
+    <button type="button">Animar</button>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script>
+      const $cajaAzul = $("#cajaAzul");
+
+      // $cajaAzul.addClass("animate__animated animate__flipInX");
+
+      $.fn.extend({
+        animateCss: function (animationName) {
+          var animationEnd =
+            "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
+          this.addClass("animate__animated animate__" + animationName).one(
+            animationEnd,
+            function () {
+              $(this).removeClass(
+                "animate__animated animate__" + animationName
+              );
+            }
+          );
+          return this;
+        },
+      });
+
+      $("button").on("click", () => {
+        $cajaAzul.animateCss("bounce animate__fast");
+      });
+    </script>
+  </body>
+</html>
