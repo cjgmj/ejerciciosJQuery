@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Modo pantalla completa</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor.
+    </p>
+    <!-- <img src="assets/img/foto.jpg" /> -->
+
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/9ZfN87gSjvI"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+
+    <button type="button">Fullscreen</button>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script src="assets/libs/bigscreen.min.js"></script>
+    <script>
+      // $("button").on("click", () => BigScreen.toggle()); // Toda la página
+
+      // Imagen
+      // $("button").on("click", () => {
+      //   const elemento = $("img")[0];
+
+      //   BigScreen.request(elemento);
+      // });
+
+      // Vídeo
+      $("button").on("click", () => {
+        const elemento = $("iframe")[0];
+
+        BigScreen.request(elemento);
+      });
+    </script>
+  </body>
+</html>
