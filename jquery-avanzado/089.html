@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+    <link rel="stylesheet" href="assets/libs/stacktable/stacktable.css" />
+  </head>
+  <body>
+    <h1>Tablas responsives</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor.
+    </p>
+
+    <table class="table table-inverse">
+      <thead>
+        <tr>
+          <th>Columna 1</th>
+          <th>Columna 2</th>
+          <th>Columna 3</th>
+          <th>Columna 4</th>
+          <th>Columna 5</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Datos 1</td>
+          <td>Datos 2</td>
+          <td>Datos 3</td>
+          <td>Datos 4</td>
+          <td>Datos 5</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script src="assets/libs/stacktable/stacktable.js"></script>
+    <script>
+      $("table").stacktable();
+    </script>
+  </body>
+</html>
