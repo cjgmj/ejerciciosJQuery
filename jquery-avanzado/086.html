@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Convertir inputs en gráficos</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor.
+    </p>
+
+    <input
+      type="text"
+      class="dial"
+      value="25"
+      data-min="0"
+      data-max="100"
+      data-fgColor="chartreuse"
+    />
+
+    <input
+      type="text"
+      class="dial"
+      value="25"
+      data-min="0"
+      data-max="100"
+      data-fgColor="#0b597a"
+    />
+
+    <input
+      type="text"
+      class="dial"
+      value="25"
+      data-min="0"
+      data-max="100"
+      data-fgColor="#0b597a"
+      data-bgColor="#FFFFFF"
+    />
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script src="assets/libs/jquery.knob.min.js"></script>
+    <script>
+      $(".dial").knob();
+
+      $(".dial").val(56).trigger("change"); // Cambiar valor y actualizar progreso
+    </script>
+  </body>
+</html>
