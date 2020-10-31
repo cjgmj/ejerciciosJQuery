@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Avanzado</title>
+
+    <!-- Estilo del Boostrap 4 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+  </head>
+  <body>
+    <h1>Máscaras en los inputs</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor.
+    </p>
+
+    <label>Fecha</label>
+    <input type="text" id="fecha" class="form-control" />
+    <br />
+
+    <label>Teléfono</label>
+    <input type="text" id="tel" class="form-control" />
+    <br />
+
+    <label>Fijo</label>
+    <input type="text" id="fij" class="form-control" />
+    <br />
+
+    <label>Color</label>
+    <input type="text" id="color" class="form-control" />
+    <br />
+
+    <!-- Librería de jQuery -->
+    <script src="assets/libs/jquery-3.min.js" charset="utf-8"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"
+      charset="utf-8"
+    ></script>
+    <script>
+      $("#fecha").mask("99/99/9999");
+      $("#tel").mask("+(99) 999 99 99 99");
+      $("#fij").mask("999 99 99 99");
+
+      $.mask.definitions["h"] = "[A-Fa-f0-9]";
+
+      $("#color").mask("#hhhhhh");
+    </script>
+  </body>
+</html>
